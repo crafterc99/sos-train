@@ -10,7 +10,17 @@ import SubscriptionGate from '@/components/auth/SubscriptionGate'
 import ToastContainer from '@/components/ui/ToastContainer'
 import Spinner from '@/components/ui/Spinner'
 
-// Placeholder pages (will be replaced with real implementations)
+// Real auth pages
+import LoginPage from '@/pages/Auth/LoginPage'
+import SignupPage from '@/pages/Auth/SignupPage'
+import PasswordResetPage from '@/pages/Auth/PasswordResetPage'
+import AuthCallbackPage from '@/pages/Auth/AuthCallbackPage'
+import OnboardingPage from '@/pages/Auth/OnboardingPage'
+
+// Real account pages
+import RealProfilePage from '@/pages/Account/ProfilePage'
+
+// Placeholder pages (will be replaced phase by phase)
 import {
   DashboardPage, ProgramsPage, ProgramDetailPage, WorkoutDetailPage,
   ExercisesPage, ExerciseDetailPage, ProgressPage, WorkoutLogPage,
@@ -18,7 +28,7 @@ import {
   LeaderboardPage, LockerRoomPage, CheckInPage, CheckInHistoryPage,
   LiveSessionsPage, LiveCallPage, MessagesPage, ChallengesPage,
   ChallengeDetailPage, StorePage, ProductDetailPage, OrderHistoryPage,
-  EventsPage, EventDetailPage, ExclusiveContentPage, ProfilePage,
+  EventsPage, EventDetailPage, ExclusiveContentPage,
   ManageBillingPage, SettingsPage, PricingPage, SubscriptionSuccessPage,
   AdminDashboardPage, AdminProgramsPage, AdminWorkoutsPage, AdminExercisesPage,
   AdminMembersPage, AdminCheckInsPage, AdminLiveSessionsPage, AdminLockerRoomPage,
@@ -26,72 +36,20 @@ import {
   AdminBroadcastPage,
 } from '@/pages/placeholder'
 
-// Auth pages placeholder
-function LoginPage() {
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-charcoal p-4">
-      <div className="bg-graphite border border-smoke rounded-2xl p-8 w-full max-w-md text-center">
-        <h1 className="text-3xl font-black mb-2">
-          <span className="text-amber text-glow-amber">SOS</span>{' '}
-          <span className="text-white">TRAIN</span>
-        </h1>
-        <p className="text-white/40 text-sm">Login page — coming in Phase 1B</p>
-      </div>
-    </div>
-  )
-}
-
-function SignupPage() {
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-charcoal p-4">
-      <div className="bg-graphite border border-smoke rounded-2xl p-8 w-full max-w-md text-center">
-        <h1 className="text-3xl font-black mb-2">
-          <span className="text-amber text-glow-amber">SOS</span>{' '}
-          <span className="text-white">TRAIN</span>
-        </h1>
-        <p className="text-white/40 text-sm">Signup page — coming in Phase 1B</p>
-      </div>
-    </div>
-  )
-}
-
-function OnboardingPage() {
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-charcoal p-4">
-      <div className="bg-graphite border border-smoke rounded-2xl p-8 w-full max-w-md text-center">
-        <p className="text-white/40 text-sm">Onboarding — coming in Phase 1B</p>
-      </div>
-    </div>
-  )
-}
-
-function AuthCallbackPage() {
-  return <Spinner className="min-h-screen" />
-}
-
-function PasswordResetPage() {
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-charcoal p-4">
-      <div className="bg-graphite border border-smoke rounded-2xl p-8 w-full max-w-md text-center">
-        <p className="text-white/40 text-sm">Password reset — coming in Phase 1B</p>
-      </div>
-    </div>
-  )
-}
-
 // Landing page
 function LandingPage() {
   const user = useAuthStore((s) => s.user)
   if (user) return <Navigate to="/dashboard" replace />
 
   return (
-    <div className="min-h-screen bg-charcoal">
+    <div className="min-h-[calc(100vh-64px)] bg-charcoal">
+      {/* Hero section */}
       <div className="max-w-4xl mx-auto px-4 py-20 text-center">
         <h1 className="text-5xl sm:text-7xl font-black tracking-tight mb-6">
           <span className="text-amber text-glow-amber">SOS</span>{' '}
           <span className="text-white">TRAIN</span>
         </h1>
-        <p className="text-xl text-white/60 font-semibold mb-2">
+        <p className="text-xl sm:text-2xl text-white/60 font-semibold mb-2">
           Train Like Your Life Depends On It.
         </p>
         <p className="text-sm text-white/30 uppercase tracking-[0.3em] mb-12">
@@ -99,16 +57,40 @@ function LandingPage() {
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <a href="/signup">
-            <button className="inline-flex items-center justify-center font-bold text-white bg-gradient-to-r from-amber to-ember rounded-xl px-8 py-4 text-base shadow-[0_2px_12px_rgba(255,165,0,0.35)] hover:shadow-[0_4px_20px_rgba(255,165,0,0.5)] transition-all active:scale-[0.98]">
+            <button className="inline-flex items-center justify-center font-bold text-white bg-gradient-to-r from-amber to-ember rounded-xl px-8 py-4 text-base shadow-[0_2px_12px_rgba(255,165,0,0.35)] hover:shadow-[0_4px_20px_rgba(255,165,0,0.5)] transition-all active:scale-[0.98] cursor-pointer">
               Start Training
             </button>
           </a>
           <a href="/pricing">
-            <button className="inline-flex items-center justify-center font-bold text-amber border-2 border-amber bg-transparent rounded-xl px-8 py-4 text-base hover:bg-amber hover:text-charcoal transition-all active:scale-[0.98]">
+            <button className="inline-flex items-center justify-center font-bold text-amber border-2 border-amber bg-transparent rounded-xl px-8 py-4 text-base hover:bg-amber hover:text-charcoal transition-all active:scale-[0.98] cursor-pointer">
               View Plans
             </button>
           </a>
         </div>
+      </div>
+
+      {/* Features section */}
+      <div className="max-w-5xl mx-auto px-4 pb-20">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          {[
+            { title: 'Elite Programs', desc: 'Coach-designed training programs built for results, not reps.', icon: '🏋️' },
+            { title: 'Live Coaching', desc: 'Join live group sessions or book 1-on-1 calls with your coach.', icon: '📹' },
+            { title: 'Community', desc: 'Train alongside a community that pushes you to be better every day.', icon: '🔥' },
+          ].map((f) => (
+            <div key={f.title} className="bg-graphite border border-smoke rounded-2xl p-6 text-center">
+              <span className="text-3xl mb-4 block">{f.icon}</span>
+              <h3 className="text-lg font-bold text-white mb-2">{f.title}</h3>
+              <p className="text-sm text-white/40">{f.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Footer */}
+      <div className="border-t border-smoke py-8 text-center">
+        <p className="text-xs text-white/20">
+          <span className="text-amber font-bold">SOS</span> TRAIN &middot; Built for Champions
+        </p>
       </div>
     </div>
   )
@@ -191,7 +173,7 @@ export default function App() {
           <Route path="/events" element={<EventsPage />} />
           <Route path="/events/:id" element={<EventDetailPage />} />
           <Route path="/exclusive" element={<ExclusiveContentPage />} />
-          <Route path="/account" element={<ProfilePage />} />
+          <Route path="/account" element={<RealProfilePage />} />
           <Route path="/account/subscription" element={<ManageBillingPage />} />
           <Route path="/account/settings" element={<SettingsPage />} />
         </Route>
