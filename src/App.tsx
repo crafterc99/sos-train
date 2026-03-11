@@ -25,10 +25,17 @@ import RealManageBillingPage from '@/pages/Account/ManageBillingPage'
 import RealPricingPage from '@/pages/Pricing/PricingPage'
 import RealSubscriptionSuccessPage from '@/pages/Pricing/SubscriptionSuccessPage'
 
+// Real training pages
+import RealDashboardPage from '@/pages/Dashboard/DashboardPage'
+import RealProgramsPage from '@/pages/Training/ProgramsPage'
+import RealProgramDetailPage from '@/pages/Training/ProgramDetailPage'
+import RealWorkoutDetailPage from '@/pages/Training/WorkoutDetailPage'
+import RealExercisesPage from '@/pages/Training/ExercisesPage'
+import RealExerciseDetailPage from '@/pages/Training/ExerciseDetailPage'
+
 // Placeholder pages (will be replaced phase by phase)
 import {
-  DashboardPage, ProgramsPage, ProgramDetailPage, WorkoutDetailPage,
-  ExercisesPage, ExerciseDetailPage, ProgressPage, WorkoutLogPage,
+  ProgressPage, WorkoutLogPage,
   WorkoutHistoryPage, HabitTrackerPage, CommunityPage, TransformationPage,
   LeaderboardPage, LockerRoomPage, CheckInPage, CheckInHistoryPage,
   LiveSessionsPage, LiveCallPage, MessagesPage, ChallengesPage,
@@ -151,12 +158,12 @@ export default function App() {
             </SubscriptionGate>
           </ProtectedRoute>
         }>
-          <Route path="/dashboard" element={<DashboardPage />} />
-          <Route path="/programs" element={<ProgramsPage />} />
-          <Route path="/programs/:id" element={<ProgramDetailPage />} />
-          <Route path="/workouts/:id" element={<WorkoutDetailPage />} />
-          <Route path="/exercises" element={<ExercisesPage />} />
-          <Route path="/exercises/:id" element={<ExerciseDetailPage />} />
+          <Route path="/dashboard" element={<RealDashboardPage />} />
+          <Route path="/programs" element={<RealProgramsPage />} />
+          <Route path="/programs/:id" element={<RealProgramDetailPage />} />
+          <Route path="/workouts/:id" element={<RealWorkoutDetailPage />} />
+          <Route path="/exercises" element={<RealExercisesPage />} />
+          <Route path="/exercises/:id" element={<RealExerciseDetailPage />} />
           <Route path="/progress" element={<ProgressPage />} />
           <Route path="/workout-log" element={<WorkoutLogPage />} />
           <Route path="/workout-history" element={<WorkoutHistoryPage />} />
