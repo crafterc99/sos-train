@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+@theme {
+  /* ═══ CORE BRAND COLORS (from SOSTrain Color Aesthetic) ═══ */
+  --color-charcoal: #1A1A1A;
+  --color-graphite: #2D2D2D;
+  --color-smoke: #3D3D3D;
+
+  /* ═══ POWER ACCENTS ═══ */
+  --color-amber: #FFA500;
+  --color-blaze: #FF8C00;
+  --color-ember: #CC6E00;
+
+  /* ═══ FIELD & TEXT ═══ */
+  --color-turf: #2E7D32;
+
+  /* ═══ SEMANTIC ALIASES ═══ */
+  --color-brand: #FFA500;
+  --color-brand-hover: #FF8C00;
+  --color-brand-deep: #CC6E00;
+  --color-bg-primary: #1A1A1A;
+  --color-bg-card: #2D2D2D;
+  --color-bg-border: #3D3D3D;
+  --color-success: #2E7D32;
+
+  /* ═══ TYPOGRAPHY — Inter Font Family ═══ */
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+/* ═══ GLOBAL DARK-FIRST BASE ═══ */
+html {
+  background-color: #1A1A1A;
+}
+
+body {
+  margin: 0;
+  background-color: #1A1A1A;
+  color: #FFFFFF;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-width: 320px;
+}
+
+/* ═══ SCROLLBAR STYLING ═══ */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #1A1A1A;
+}
+::-webkit-scrollbar-thumb {
+  background: #3D3D3D;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #FFA500;
+}
+
+/* ═══ GRADIENT UTILITY CLASSES ═══ */
+.gradient-fire-surge {
+  background: linear-gradient(to right, #FFA500, #CC6E00);
+}
+.gradient-dark-power {
+  background: linear-gradient(to bottom, #1A1A1A, #3D3D3D);
+}
+.gradient-smoke-flame {
+  background: linear-gradient(to right, #2D2D2D, #FFA500);
+}
+
+/* ═══ GLOW EFFECTS ═══ */
+.glow-amber {
+  box-shadow: 0 0 20px rgba(255, 165, 0, 0.3);
+}
+.glow-amber-strong {
+  box-shadow: 0 0 40px rgba(255, 165, 0, 0.5);
+}
+.text-glow-amber {
+  text-shadow: 0 0 20px rgba(255, 165, 0, 0.5);
+}
