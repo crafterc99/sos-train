@@ -19,6 +19,11 @@ import OnboardingPage from '@/pages/Auth/OnboardingPage'
 
 // Real account pages
 import RealProfilePage from '@/pages/Account/ProfilePage'
+import RealManageBillingPage from '@/pages/Account/ManageBillingPage'
+
+// Real pricing pages
+import RealPricingPage from '@/pages/Pricing/PricingPage'
+import RealSubscriptionSuccessPage from '@/pages/Pricing/SubscriptionSuccessPage'
 
 // Placeholder pages (will be replaced phase by phase)
 import {
@@ -29,7 +34,7 @@ import {
   LiveSessionsPage, LiveCallPage, MessagesPage, ChallengesPage,
   ChallengeDetailPage, StorePage, ProductDetailPage, OrderHistoryPage,
   EventsPage, EventDetailPage, ExclusiveContentPage,
-  ManageBillingPage, SettingsPage, PricingPage, SubscriptionSuccessPage,
+  SettingsPage,
   AdminDashboardPage, AdminProgramsPage, AdminWorkoutsPage, AdminExercisesPage,
   AdminMembersPage, AdminCheckInsPage, AdminLiveSessionsPage, AdminLockerRoomPage,
   AdminStorePage, AdminOrdersPage, AdminEventsPage, AdminChallengesPage,
@@ -130,8 +135,8 @@ export default function App() {
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/reset-password" element={<PasswordResetPage />} />
         <Route path="/auth/callback" element={<AuthCallbackPage />} />
-        <Route path="/pricing" element={<PricingPage />} />
-        <Route path="/subscription/success" element={<SubscriptionSuccessPage />} />
+        <Route path="/pricing" element={<RealPricingPage />} />
+        <Route path="/subscription/success" element={<RealSubscriptionSuccessPage />} />
 
         {/* Onboarding (authenticated, no sub required) */}
         <Route path="/onboarding" element={
@@ -174,7 +179,7 @@ export default function App() {
           <Route path="/events/:id" element={<EventDetailPage />} />
           <Route path="/exclusive" element={<ExclusiveContentPage />} />
           <Route path="/account" element={<RealProfilePage />} />
-          <Route path="/account/subscription" element={<ManageBillingPage />} />
+          <Route path="/account/subscription" element={<RealManageBillingPage />} />
           <Route path="/account/settings" element={<SettingsPage />} />
         </Route>
 
