@@ -33,6 +33,13 @@ import RealWorkoutDetailPage from '@/pages/Training/WorkoutDetailPage'
 import RealExercisesPage from '@/pages/Training/ExercisesPage'
 import RealExerciseDetailPage from '@/pages/Training/ExerciseDetailPage'
 
+// Real admin pages
+import RealAdminDashboardPage from '@/pages/Admin/AdminDashboardPage'
+import RealAdminProgramsPage from '@/pages/Admin/AdminProgramsPage'
+import RealAdminWorkoutsPage from '@/pages/Admin/AdminWorkoutsPage'
+import RealAdminExercisesPage from '@/pages/Admin/AdminExercisesPage'
+import RealAdminMembersPage from '@/pages/Admin/AdminMembersPage'
+
 // Placeholder pages (will be replaced phase by phase)
 import {
   ProgressPage, WorkoutLogPage,
@@ -42,8 +49,7 @@ import {
   ChallengeDetailPage, StorePage, ProductDetailPage, OrderHistoryPage,
   EventsPage, EventDetailPage, ExclusiveContentPage,
   SettingsPage,
-  AdminDashboardPage, AdminProgramsPage, AdminWorkoutsPage, AdminExercisesPage,
-  AdminMembersPage, AdminCheckInsPage, AdminLiveSessionsPage, AdminLockerRoomPage,
+  AdminCheckInsPage, AdminLiveSessionsPage, AdminLockerRoomPage,
   AdminStorePage, AdminOrdersPage, AdminEventsPage, AdminChallengesPage,
   AdminBroadcastPage,
 } from '@/pages/placeholder'
@@ -196,11 +202,11 @@ export default function App() {
             <AdminLayout />
           </ProtectedRoute>
         }>
-          <Route index element={<AdminDashboardPage />} />
-          <Route path="programs" element={<AdminProgramsPage />} />
-          <Route path="workouts" element={<AdminWorkoutsPage />} />
-          <Route path="exercises" element={<AdminExercisesPage />} />
-          <Route path="members" element={<AdminMembersPage />} />
+          <Route index element={<RealAdminDashboardPage />} />
+          <Route path="programs" element={<RealAdminProgramsPage />} />
+          <Route path="workouts" element={<RealAdminWorkoutsPage />} />
+          <Route path="exercises" element={<RealAdminExercisesPage />} />
+          <Route path="members" element={<RealAdminMembersPage />} />
           <Route path="check-ins" element={<AdminCheckInsPage />} />
           <Route path="live-sessions" element={<AdminLiveSessionsPage />} />
           <Route path="locker-room" element={<AdminLockerRoomPage />} />
