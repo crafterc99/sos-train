@@ -2,7 +2,7 @@ import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 import type { User, Session } from '@supabase/supabase-js'
 import type { Profile } from '@/types'
-import { supabase } from '@/lib/supabase'
+import { supabase, supabaseConfigured } from '@/lib/supabase'
 
 interface AuthState {
   user: User | null
@@ -31,6 +31,10 @@ export const useAuthStore = create<AuthState>()(
 
       initialize: async () => {
         try {
+          if (!supabaseConfigured) {
+            set({ initialized: true })
+            return
+          }
           const { data: { session } } = await supabase.auth.getSession()
           if (session?.user) {
             const { data: profile } = await supabase
